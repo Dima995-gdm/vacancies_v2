@@ -134,3 +134,7 @@ MEDIA_COMPANY_IMAGE_DIR = 'company_images'
 MEDIA_SPECIALITY_IMAGE_DIR = 'speciality_images'
 
 INTERNAL_IPS = ['127.0.0.1']
+
+
+# Перенаправление для авторизации
+LOGIN_URL = 'login_user'
