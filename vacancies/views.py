@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Count, Q
 from django.http import HttpResponseNotFound, HttpResponseServerError
 from django.shortcuts import render, get_object_or_404, redirect
@@ -128,7 +127,7 @@ class EditCompanyView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
             form = CompanyForm(instance=self.get_object())
             return render(request, 'vacancies/company-edit.html', {'form': form})
 
-        except ObjectDoesNotExist:
+        except Company.DoesNotExist:
             return redirect('create_company_lets_start')
 
 
@@ -231,7 +230,7 @@ class EditResume(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
             form = ResumeForm(instance=self.get_object())
             return render(request, 'vacancies/resume-edit.html', {'form': form})
 
-        except ObjectDoesNotExist:
+        except Resume.DoesNotExist:
             return redirect('create_resume_lets_start')
 
 
